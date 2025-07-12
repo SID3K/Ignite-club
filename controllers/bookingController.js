@@ -14,7 +14,7 @@ const createBooking = async (req, res)=>{
         const validatedDto = validateBookingInput(bookingDto);
 
         const result = await bookingService.createBooking(validatedDto);
-        logger.info(`Booking created successfully for user: ${validatedDto.username}`);
+        logInfo(req, `Booking created successfully for user: ${validatedDto.username}`);
         res.status(201).json(result);
     }
     catch(error){
@@ -30,7 +30,7 @@ const bookingSearch = async(req, res)=>{
         const validatedDto = validateBookingSearchInput(bookingSearchDto);
 
         const result = await bookingService.searchBookings(validatedDto);
-        logger.info(`Search returned ${result.length} bookings`);
+        logInfo(req, `Search returned ${result.length} bookings`);
         res.status(200).json(result);
     }
     catch(error){

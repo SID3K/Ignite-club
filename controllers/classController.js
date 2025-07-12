@@ -25,7 +25,7 @@ const getClasses = async(req, res)=>{
     try{
         logInfo(req, 'Fetch all classes request received');
         const result = await classService.getAllClasses();
-        logger.info(`Fetched ${result.length} classes`);
+        logInfo(req, `Fetched ${result.length} classes`);
         res.status(200).json(result);
     }
     catch(error){

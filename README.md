@@ -182,7 +182,7 @@ At least one of these must be provided.
 
 ## Testing the API
 
-Use any REST client like **Postman** to test the API..
+Use any REST client like **Postman** to test the API.
 
 ---
 
@@ -193,3 +193,4 @@ Use any REST client like **Postman** to test the API..
 Email: siddarthareddykoppera3000@gmail.com
 ---
 
+ 
