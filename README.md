@@ -23,7 +23,7 @@ Create a `.env` file in the project root and add the following:
 
 ```env
 PORT=5000
-MONGO_URI=mongodb+srv://siddarth:koppera@cluster0.imbjyzu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+MONGO_URI=your-mongodb-connection-string
 ```
 
 ---
@@ -43,15 +43,18 @@ The app will start on `http://localhost:5000`   .
 Before booking a class, make sure to follow these steps:
 
 1. **Create a Member**  
-   Use the `POST /api/members` endpoint to create a member. You can use the sample request body provided in this README.
+   Use the `POST /api/members` endpoint to create a member.
 
 2. **Create a Class**  
    Use the `POST /api/classes` endpoint to create one or more class instances.
 
-3. **Book a Class**  
+3. **View Classes**
+   Use the `GET /api/classes` endpoint to fetch all created classes.
+
+4. **Book a Class**  
    Once both member and class are created, use the `POST /api/bookings` endpoint to book the class using the `username` and `classId`.
 
-Refer to the sample request bodies below each endpoint for guidance on request structure.
+Refer to the sample request bodies under each API Endpoints section for correct structure.
 
 ---
 
