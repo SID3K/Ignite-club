@@ -1,7 +1,7 @@
 
 # Ignite Club
 
-REST API built using **Node.js** and **MongoDB** for managing club classes and member bookings.
+A RESTful API built with Node.js and MongoDB for managing daily club classes, member registrations, and class bookings.
 
 ---
 
@@ -175,7 +175,9 @@ At least one of these must be provided.
 ```
 /api/bookings?startDate=2025-07-01&endDate=2025-07-31
 ```
-
+```
+/api/bookings?username=sidd&startDate=2025-07-01&endDate=2025-07-31
+```
 ---
 
 ## Testing the API
@@ -184,10 +186,10 @@ Use any REST client like **Postman** to test the API.
 
 ---
 
-## 🧑‍💻 Author
+## Author
 
-**Siddarth Reddy**  
-[GitHub](https://github.com/sid3k)  
+Siddarth Reddy
+[GitHub](https://github.com/sid3k) 
 Email: siddarthareddykoppera3000@gmail.com
 ---
 
