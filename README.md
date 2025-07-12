@@ -1,7 +1,7 @@
 
 # Ignite Club
 
-A simple REST API built using **Node.js** and **MongoDB** for managing club classes and member bookings.
+REST API built using **Node.js** and **MongoDB** for managing club classes and member bookings.
 
 ---
 
