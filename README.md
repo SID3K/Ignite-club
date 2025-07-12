@@ -38,6 +38,22 @@ The app will start on `http://localhost:5000`   .
 
 ---
 
+## 📌 Usage Instructions
+
+Before booking a class, make sure to follow these steps:
+
+1. **Create a Member**  
+   Use the `POST /api/members` endpoint to create a member. You can use the sample request body provided in this README.
+
+2. **Create a Class**  
+   Use the `POST /api/classes` endpoint to create one or more class instances.
+
+3. **Book a Class**  
+   Once both member and class are created, use the `POST /api/bookings` endpoint to book the class using the `username` and `classId`.
+
+Refer to the sample request bodies below each endpoint for guidance on request structure.
+
+---
 
 ## API Endpoints
 
