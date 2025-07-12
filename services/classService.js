@@ -40,7 +40,6 @@ class ClassService {
     try {
       logger.info('Fetching all classes from DB');
       const result = await classRepository.getAll();
-      logger.info(`Fetched ${result.length} classes`);
       return result;
     }
     catch (error) {

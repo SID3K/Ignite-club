@@ -19,4 +19,17 @@ const createMember = async (req, res)=>{
     }
 }
 
-module.exports = { createMember };
+const getMember = async(req, res)=>{
+    try{
+        logInfo(req, 'Fetch all members request received');
+        const result = await memberService.getAllMembers();
+        logger.info(`Fetched ${result.length} members`);
+        res.status(200).json(result);
+    }
+    catch(error){
+        logError(req, error);
+        res.status(error.statusCode || 500).json({ message: error.message || 'Something went wrong' });
+    }
+}
+
+module.exports = { createMember, getMember };

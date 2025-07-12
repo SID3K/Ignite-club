@@ -10,20 +10,10 @@ REST API built using **Node.js** and **MongoDB** for managing club classes and m
 ### Installation
 
 ```bash
-git clone https://github.com/<your-username>/ignite-club-booking.git
-cd ignite-club-booking
+git clone https://github.com/SID3K/Ignite-club.git
+cd Ignite-club
 npm install
 ```
-
----
-
-### Running the Server
-
-```bash
-npm start
-```
-
-The app will start on `http://localhost:5000` (or your configured `PORT`).
 
 ---
 
@@ -37,6 +27,17 @@ MONGO_URI=mongodb+srv://siddarth:koppera@cluster0.imbjyzu.mongodb.net/?retryWrit
 ```
 
 ---
+
+### Running the Server
+
+```bash
+npm start
+```
+
+The app will start on `http://localhost:5000`   .
+
+---
+
 
 ## API Endpoints
 
@@ -52,14 +53,18 @@ Create a new member.
 
 #### Sample Request Body:
 
+**Field Descriptions:**
+- `memberName` – required, name of the member  
+- `username` – required, unique identifier for the member  
+- `email` – optional 
+
 ```json
 {
   "memberName": "Siddarth Reddy",
-  "username": "siddreddy",
-  "email": "sidd@example.com"
+  "username": "sidd",
+  "email": "siddarth@gmail.com"
 }
 ```
-
 ---
 
 ### Get All Members
@@ -79,6 +84,14 @@ Creates a new class.
 
 #### Sample Request Body:
 
+**Field Descriptions:**
+- `className` – required, string  
+- `startDate` – required, format: `YYYY-MM-DD`  
+- `endDate` – required, must be **after** `startDate`  
+- `startTime` – required, format: `HH:mm` (24-hour time)  
+- `duration` – required, in minutes  
+- `capacity` – required, must be >= 1  
+
 ```json
 {
   "className": "Yoga Session",
@@ -89,7 +102,6 @@ Creates a new class.
   "capacity": "20"
 }
 ```
-
 ---
 
 ### Get All Classes
@@ -109,9 +121,14 @@ Books a class for a member.
 
 #### Sample Request Body:
 
+**Field Descriptions:**
+- `username` – required, must match an existing member's username  
+- `classId` – required, must be a valid MongoDB ObjectId representing a class scheduled on a specific date  
+- `participationDate` – required, format: `YYYY-MM-DD`, must match the date of the class  
+
 ```json
 {
-  "username": "siddreddy",
+  "username": "sidd",
   "classId": "64f15c3e6d4eab001efb5faa",
   "participationDate": "2025-07-18"
 }
@@ -133,7 +150,7 @@ At least one of these must be provided.
 #### Sample Query Parameters:
 
 ```
-/api/bookings?username=siddreddy
+/api/bookings?username=sidd
 ```
 
 ```

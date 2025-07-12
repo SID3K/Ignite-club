@@ -27,7 +27,6 @@ class MemberService{
         try {
             logger.info('Fetching all members from DB');
             const members = await memberRepository.getAll();
-            logger.info(`Fetched ${members.length} members`);
             return members;
         } 
         catch (error) {

@@ -13,7 +13,10 @@ class BookingService {
 
       const classInstance = await bookingRepository.findClassById(classId);
       if (!classInstance) throw new AppError('Class not found', 404, 'Database Error');
-
+      
+      if (participationDate !== classInstance.date.toISOString().split('T')[0]) {
+        throw new AppError('Participation date must match the class date', 400, 'Validation Error');
+      } 
       const bookingCount = await bookingRepository.countExistingBookings(classInstance._id, participationDate);
       if (bookingCount >= classInstance.capacity) {
         throw new AppError('Class is full', 400, 'Database Error');
