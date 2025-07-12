@@ -188,7 +188,7 @@ Use any REST client like **Postman** to test the API.
 
 ## Author
 
-Siddarth Reddy
+**Siddarth Reddy** 
 [GitHub](https://github.com/sid3k) 
 Email: siddarthareddykoppera3000@gmail.com
 ---
