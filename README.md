@@ -165,16 +165,10 @@ Use any REST client like **Postman** to test the API.
 
 ---
 
-## Project Structure (to be added)
-
-<Coming Soon>
-
----
-
 ## 🧑‍💻 Author
 
 **Siddarth Reddy**  
 [GitHub](https://github.com/sid3k)  
-Email: siddarthareddykoppera3000@example.com
+Email: siddarthareddykoppera3000@gmail.com
 ---
 
