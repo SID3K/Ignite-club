@@ -39,7 +39,7 @@ describe('Class Controller', () => {
       expect(validateClassInput).toHaveBeenCalledWith(expect.any(createClassDTO));
       expect(classService.createClass).toHaveBeenCalledWith(validatedDto);
       expect(res.status).toHaveBeenCalledWith(201);
-      expect(res.json).toHaveBeenCalledWith(mockResult);
+      expect(res.json).toHaveBeenCalledWith({ success: true, data: mockResult });
     });
 
     it('should handle errors and return 500', async () => {
@@ -51,7 +51,7 @@ describe('Class Controller', () => {
       await classController.createClass(req, res);
 
       expect(res.status).toHaveBeenCalledWith(500);
-      expect(res.json).toHaveBeenCalledWith({ message: 'Invalid input' });
+      expect(res.json).toHaveBeenCalledWith({ success: false, message: 'Invalid input' });
     });
   });
 
@@ -67,7 +67,7 @@ describe('Class Controller', () => {
 
       expect(classService.getAllClasses).toHaveBeenCalled();
       expect(res.status).toHaveBeenCalledWith(200);
-      expect(res.json).toHaveBeenCalledWith(mockResult);
+      expect(res.json).toHaveBeenCalledWith({ success: true, data: mockResult });
     });
 
     it('should handle errors and return 500', async () => {
@@ -79,7 +79,7 @@ describe('Class Controller', () => {
       await classController.getClasses(req, res);
 
       expect(res.status).toHaveBeenCalledWith(500);
-      expect(res.json).toHaveBeenCalledWith({ message: 'Database operation failed' });
+      expect(res.json).toHaveBeenCalledWith({ success: false, message: 'Database operation failed' });
     });
   });
 });

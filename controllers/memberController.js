@@ -11,11 +11,14 @@ const createMember = async (req, res)=>{
 
         const result = await memberService.createMember(validatedDto);
         logInfo(req, `Member "${validatedDto.memberName}" created successfully`);
-        res.status(201).json(result);
+        res.status(201).json({ success: true, data: result });
     }
     catch(error){
         logError(req, error);
-         res.status(error.statusCode || 500).json({ message: error.message || 'Something went wrong' });
+        res.status(error.statusCode || 500).json({
+          success: false,
+          message: error.message || 'Something went wrong'
+        });
     }
 }
 
@@ -24,11 +27,14 @@ const getMember = async(req, res)=>{
         logInfo(req, 'Fetch all members request received');
         const result = await memberService.getAllMembers();
         logInfo(req, `Fetched ${result.length} members`);
-        res.status(200).json(result);
+        res.status(200).json({ success: true, data: result });
     }
     catch(error){
         logError(req, error);
-        res.status(error.statusCode || 500).json({ message: error.message || 'Something went wrong' });
+        res.status(error.statusCode || 500).json({
+          success: false,
+          message: error.message || 'Something went wrong'
+        });
     }
 }
 

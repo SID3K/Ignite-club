@@ -13,11 +13,14 @@ const createClass = async (req, res)=>{
 
         const result = await classService.createClass(validatedDto);
         logInfo(req, `Class "${validatedDto.className}" created successfully`);
-        res.status(201).json(result);
+        res.status(201).json({ success: true, data: result });
     }
     catch(error){
         logError(req, error);
-        res.status(error.statusCode || 500).json({ message: error.message || 'Something went wrong' });
+        res.status(error.statusCode || 500).json({
+          success: false,
+          message: error.message || 'Something went wrong'
+        });
     }
 }
 
@@ -26,11 +29,14 @@ const getClasses = async(req, res)=>{
         logInfo(req, 'Fetch all classes request received');
         const result = await classService.getAllClasses();
         logInfo(req, `Fetched ${result.length} classes`);
-        res.status(200).json(result);
+        res.status(200).json({ success: true, data: result });
     }
     catch(error){
         logError(req, error);
-        res.status(error.statusCode || 500).json({ message: error.message || 'Something went wrong' });
+        res.status(error.statusCode || 500).json({
+          success: false,
+          message: error.message || 'Something went wrong'
+        });
     }
 }
 

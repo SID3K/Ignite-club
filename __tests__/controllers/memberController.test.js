@@ -38,7 +38,7 @@ describe('Member Controller', () => {
       await memberController.createMember(req, res);
 
       expect(res.status).toHaveBeenCalledWith(201);
-      expect(res.json).toHaveBeenCalledWith(mockResult);
+      expect(res.json).toHaveBeenCalledWith({ success: true, data: mockResult });
       expect(memberService.createMember).toHaveBeenCalledWith(expect.any(CreateMemberDTO));
     });
 
@@ -53,7 +53,7 @@ describe('Member Controller', () => {
       await memberController.createMember(req, res);
 
       expect(res.status).toHaveBeenCalledWith(400);
-      expect(res.json).toHaveBeenCalledWith({ message: 'Member creation failed' });
+      expect(res.json).toHaveBeenCalledWith({ success: false, message: 'Member creation failed' });
     });
   });
 
@@ -68,7 +68,7 @@ describe('Member Controller', () => {
       await memberController.getMember(req, res);
 
       expect(res.status).toHaveBeenCalledWith(200);
-      expect(res.json).toHaveBeenCalledWith(mockMembers);
+      expect(res.json).toHaveBeenCalledWith({ success: true, data: mockMembers });
     });
 
     it('should handle error in getMember', async () => {
@@ -82,7 +82,7 @@ describe('Member Controller', () => {
       await memberController.getMember(req, res);
 
       expect(res.status).toHaveBeenCalledWith(500);
-      expect(res.json).toHaveBeenCalledWith({ message: 'Failed to fetch members' });
+      expect(res.json).toHaveBeenCalledWith({ success: false, message: 'Failed to fetch members' });
     });
   });
 });

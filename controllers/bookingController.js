@@ -15,11 +15,15 @@ const createBooking = async (req, res)=>{
 
         const result = await bookingService.createBooking(validatedDto);
         logInfo(req, `Booking created successfully for user: ${validatedDto.username}`);
-        res.status(201).json(result);
+        res.status(201).json({ success: true, data: result });
     }
     catch(error){
         logError(req, error);
-        res.status(error.statusCode || 500).json({ message: error.message || 'Something went wrong' });
+        res.status(error.statusCode || 500).json({
+          success: false,
+          message: error.message || 'Something went wrong'
+        });
+
     }
 }
 
@@ -31,11 +35,14 @@ const bookingSearch = async(req, res)=>{
 
         const result = await bookingService.searchBookings(validatedDto);
         logInfo(req, `Search returned ${result.length} bookings`);
-        res.status(200).json(result);
+        res.status(200).json({ success: true, data: result });
     }
     catch(error){
         logError(req, error);
-        res.status(error.statusCode || 500).json({message: error.message || 'Something went wrong'});
+        res.status(error.statusCode || 500).json({
+          success: false,
+          message: error.message || 'Something went wrong'
+        });
     }
 }
 

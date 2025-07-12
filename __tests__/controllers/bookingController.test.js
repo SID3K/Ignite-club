@@ -42,7 +42,7 @@ describe('Booking Controller', () => {
       await bookingController.createBooking(req, res);
 
       expect(res.status).toHaveBeenCalledWith(201);
-      expect(res.json).toHaveBeenCalledWith(mockResult);
+      expect(res.json).toHaveBeenCalledWith({ success: true, data: mockResult });
       expect(bookingService.createBooking).toHaveBeenCalledWith(expect.any(createBookingDTO));
     });
 
@@ -57,7 +57,7 @@ describe('Booking Controller', () => {
       await bookingController.createBooking(req, res);
 
       expect(res.status).toHaveBeenCalledWith(400);
-      expect(res.json).toHaveBeenCalledWith({ message: 'Failed to book' });
+      expect(res.json).toHaveBeenCalledWith({ success: false, message: 'Failed to book' });
     });
   });
 
@@ -72,7 +72,7 @@ describe('Booking Controller', () => {
       await bookingController.bookingSearch(req, res);
 
       expect(res.status).toHaveBeenCalledWith(200);
-      expect(res.json).toHaveBeenCalledWith(mockResult);
+      expect(res.json).toHaveBeenCalledWith({ success: true, data: mockResult });
     });
 
     it('should handle errors in booking search', async () => {
@@ -86,7 +86,7 @@ describe('Booking Controller', () => {
       await bookingController.bookingSearch(req, res);
 
       expect(res.status).toHaveBeenCalledWith(500);
-      expect(res.json).toHaveBeenCalledWith({ message: 'Search failed' });
+      expect(res.json).toHaveBeenCalledWith({ success: false, message: 'Search failed' });
     });
   });
 });
